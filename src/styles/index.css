@@ -1,0 +1,59 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+html {
+  scroll-behavior: auto; /* Lenis handles scroll */
+  cursor: none;
+}
+
+* {
+  cursor: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Theme colour transitions — scoped to bg/text/border only, not transforms */
+body,
+section,
+nav,
+footer,
+header,
+aside,
+div:not([style*="transform"]) {
+  transition-property: background-color, border-color, color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Override: never slow down elements that Motion drives */
+[style*="transform"],
+[style*="opacity"],
+[style*="translate"] {
+  transition: none !important;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: inherit;
+}
+
+/* Thin, elegant scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.18);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.38);
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
